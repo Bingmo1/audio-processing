@@ -1,0 +1,18 @@
+import noisereduce as nr
+import soundfile as sf
+
+def remove_noise(input_audio_file, output_audio_file):
+    # Load audio file
+    audio_data, sample_rate = sf.read(input_audio_file)
+
+    # Perform noise reduction
+    reduced_noise = nr.reduce_noise(audio_clip=audio_data, noise_clip=audio_data)
+
+    # Save the cleaned audio
+    sf.write(output_audio_file, reduced_noise, sample_rate)
+
+# Example usage
+if __name__ == "__main__":
+    input_audio_file = "noisy_audio.wav"
+    output_audio_file = "clean_audio.wav"
+    remove_noise(input_audio_file, output_audio_file)
